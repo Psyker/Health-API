@@ -1,0 +1,8 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+controllers:
+    resource: '../src/Controller/Api'
+    type:     annotation
+    prefix:   /api/v1
+    trailing_slash_on_root: false
