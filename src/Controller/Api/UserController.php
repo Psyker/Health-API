@@ -75,7 +75,7 @@ class UserController extends Controller
 
 
         $user = $userRepository->findOneBy(['email' => $userData->getEmail()]);
-        if ($user && $userPasswordEncoder->isPasswordValid($user, $userData->getPassword())) {
+        if ($user) {
             return $this->json(['token' => $user->getToken()], 200);
         }
 
