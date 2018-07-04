@@ -33,11 +33,13 @@ class DoctorController extends Controller
         Specialization $specialization
     ) {
         $doctors = $doctorRepository->findBy(['specialization' => $specialization]);
+        shuffle($doctors);
 
-        if (empty($psychologists)) {
+
+        if (empty($doctors)) {
             return $this->json('There are no corresponding doctors to the specified specialization', 404);
         }
 
-        return new Response($serializer->serialize($doctors, 'json'));
+        return new Response($serializer->serialize($doctors[0], 'json'));
     }
 }

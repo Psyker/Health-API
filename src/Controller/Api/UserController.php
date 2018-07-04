@@ -7,9 +7,6 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Bundle\MakerBundle\Validator;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -72,7 +69,6 @@ class UserController extends Controller
         } catch (\Exception $exception) {
             return $this->json("An error occured : $exception", 500);
         }
-
 
         $user = $userRepository->findOneBy(['email' => $userData->getEmail()]);
         if ($user) {

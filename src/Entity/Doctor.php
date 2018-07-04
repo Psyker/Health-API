@@ -48,7 +48,7 @@ class Doctor
     private $specialization;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Appointment", mappedBy="psychologist")
+     * @ORM\OneToMany(targetEntity="App\Entity\Appointment", mappedBy="doctor")
      */
     private $appointments;
 
