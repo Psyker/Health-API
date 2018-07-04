@@ -23,7 +23,7 @@ class Appointment
     private $doctor;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\UserMonitoring")
+     * @ORM\ManyToOne(targetEntity="App\Entity\UserMonitoring", inversedBy="appointments")
      * @ORM\JoinColumn(name="monitoring_id", referencedColumnName="id")
      */
     private $monitoring;
