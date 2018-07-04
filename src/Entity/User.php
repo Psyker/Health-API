@@ -28,7 +28,7 @@ class User implements UserInterface
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=500)
+     * @ORM\Column(type="string", length=500, unique=true)
      */
     private $email;
 
@@ -109,6 +109,11 @@ class User implements UserInterface
         $this->monitoring = $monitoring;
     }
 
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+
     /**
      * Returns the roles granted to the user.
      *
@@ -138,7 +143,7 @@ class User implements UserInterface
      *
      * @return string The password
      */
-    public function getPassword(): string
+    public function getPassword()
     {
         return $this->password;
     }

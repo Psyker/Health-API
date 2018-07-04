@@ -21,6 +21,8 @@ class HintController extends Controller
     public function getHints(HintRepository $hintRepository, SerializerInterface $serializer)
     {
         $hints = $hintRepository->findAll();
+        shuffle($hints);
+        $hints = array_slice($hints, 0, 5);
 
         if (empty($hints)) {
             return $this->json('There are no hints.', 404);
