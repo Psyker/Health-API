@@ -18,14 +18,4 @@ class SymptomRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Symptom::class);
     }
-
-    public function searchByQuery(string $query)
-    {
-        $request = $this->createQueryBuilder('s')
-            ->andWhere('s.name LIKE :query')
-            ->setParameter(':query', $query.'%')
-            ->getQuery();
-
-        return $request->getResult();
-    }
 }
