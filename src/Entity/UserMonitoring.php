@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserMonitoringRepository")
@@ -46,11 +47,11 @@ class UserMonitoring
     }
 
     /**
-     * @param mixed $appointments
+     * @param Appointment $appointment
      */
-    public function addAppointments(Appointment $appointments): void
+    public function addAppointments(Appointment $appointment): void
     {
-        $this->appointments[] = $appointments;
+        $this->appointments[] = $appointment;
     }
 
     /**
@@ -62,10 +63,13 @@ class UserMonitoring
     }
 
     /**
-     * @param mixed $user
+     * @param $user
+     * @return UserMonitoring
      */
-    public function setUser($user): void
+    public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
     }
 }

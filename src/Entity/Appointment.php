@@ -18,7 +18,7 @@ class Appointment
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Doctor", inversedBy="appointments")
-     * @ORM\JoinColumn(name="appointment_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="doctor_id", referencedColumnName="id")
      */
     private $doctor;
 
@@ -42,6 +42,11 @@ class Appointment
      * @ORM\Column(type="datetime", name="created_at")
      */
     private $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime('now');
+    }
 
     public function getId()
     {
