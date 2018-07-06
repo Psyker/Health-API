@@ -17,7 +17,7 @@ class HintFixtures extends Fixture
         $faker = Factory::create();
         for ($i = 0; $i <= 20; $i++) {
             $hint = (new Hint())
-                ->setBody($faker->text(200))
+                ->setBody($faker->text(400))
                 ->setTitle("Le saviez-vous ?")
                 ->setImageUri($faker->imageUrl(400, 400));
             $manager->persist($hint);
